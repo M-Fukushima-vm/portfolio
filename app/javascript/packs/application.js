@@ -33,7 +33,7 @@ const vuetify = new Vuetify({
         primary: '#ADB5BA',
         // accent: colors.lightGreen.lighten1,
         accent: colors.indigo.lighten3,
-        secondary: '#BFC7CC',
+        secondary: '#7F878C',
         error: colors.pink.accent1,
         warning: colors.deepOrange.accent1,
         info: colors.blue.accent1,
