@@ -11,7 +11,7 @@ module Jwt::TokenDecryptor
     begin
       JWT.decode(token, Rails.application.credentials.secret_key_base)
     # エラーが起きた時のアクション
-    resque StandardError # StandardErrorが起きた時
+    rescue StandardError # StandardErrorが起きた時
       # 独自の InvalidTokenError を返す ↓↓↓
       raise InvalidTokenError
     end

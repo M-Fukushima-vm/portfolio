@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   # 非ログイン時のエラー(独自例外)処理の設定
   rescue_from AuthenticationError, with: :not_authenticated
   
-  def curreent_user # ログインユーザーの取得
+  def current_user # ログインユーザーの取得
     @current_user ||= Jwt::UserAuthenticator.call(request.headers)
   end
   
