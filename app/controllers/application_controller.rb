@@ -2,6 +2,9 @@ class ApplicationController < ActionController::Base
 	# Railsのsessionを使わない(空にする)
   protect_from_forgery with: :null_session
   
+  # 独自例外の定義にStandardErrorを継承
+  class AuthenticationError < StandardError; end
+  
   # バリデーションエラー(規定例外)処理の設定
 	rescue_from ActiveRecord::RecordInvalid, with: :render_422
   
