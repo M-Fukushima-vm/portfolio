@@ -81,7 +81,7 @@
         >
           <div>
             <v-icon>mdi-close</v-icon>
-            <v-list-item-title class="text-caption">cansel</v-list-item-title>
+            <v-list-item-title class="text-caption">cancel</v-list-item-title>
           </div>
         </v-btn>
 

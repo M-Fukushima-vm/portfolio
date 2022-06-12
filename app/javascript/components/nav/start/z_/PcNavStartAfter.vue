@@ -61,6 +61,7 @@
       >
         <v-btn
           icon
+          @click="pushEditOpen"
         >
           <div>
             <v-icon>mdi-playlist-edit</v-icon>
@@ -69,20 +70,39 @@
         </v-btn>
       </v-list-item-icon>
     </v-list-item>
+
+    <v-dialog
+      v-model="toggleEditFlag"
+      hide-overlay
+      width="320px"
+    >
+      <pc-nav-start-after-edit class="justify-center"
+        @closeForm="pushEditOpen"
+      ></pc-nav-start-after-edit>
+    </v-dialog>
   </div>
 </template>
 
 <script>
+  import PcNavStartAfterEdit from '@/components/nav/start/yz_/PcNavStartAfterEdit'
+
   export default {
+    components: {
+      PcNavStartAfterEdit,
+    },
     data() {
       return {
         pushMenu: false,
         user: "",
+        toggleEditFlag: false,
       }
     },
     methods: {
       pushMenuOpen() {
         this.pushMenu = !this.pushMenu;
+      },
+      pushEditOpen() {
+        this.toggleEditFlag = !this.toggleEditFlag;
       },
       logout() {
         if (confirm("ログアウトしますか？")) {

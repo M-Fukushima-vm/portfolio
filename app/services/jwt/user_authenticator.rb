@@ -3,7 +3,6 @@ module Jwt::UserAuthenticator
   
   def call(request_headers)
     @request_headers = request_headers
-    
     begin # 追加
       payload, _ = Jwt::TokenDecryptor.call(token)
       User.find(payload['user_id'])
