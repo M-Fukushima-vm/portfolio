@@ -2,8 +2,12 @@ class Api::Me::AccountsController < ApplicationController
   before_action :authenticate
 
   def update
-    current_user.update(user_params)
-    render json: current_user, serializer: UserSerializer
+    if current_user.update(user_params)
+      render json: current_user, serializer: UserSerializer
+    else
+      render json: { error: { messages: [ current_user.errors.full_messages ] } },
+      status: :unprocessable_entity
+    end
   end
 
   def destroy # アバター画像を剥がす

@@ -6,7 +6,7 @@
     :style="{ background: 'rgba(247, 247, 247, 0.7)' }"
   >
     <v-card outlined color="transparent" class="justify-center">
-      <v-form ref="form" lazy-validation  class="mb-3">
+      <v-form ref="form" lazy-validation class="mb-3">
         <v-text-field class="py-2 mr-2"
           v-model="user.name"
           :rules="nameRules"
@@ -37,7 +37,7 @@
           dense
           required
           prepend-icon="mdi-lock-outline"
-          hint="空の状態への変更はできません"
+          hint="行内クリックで内容確認できます"
           counter
           :type="toggle.type"
         ></v-text-field>
@@ -228,10 +228,14 @@
         ];
       },
       passwordRules() {
-        return [(v) => !!v || "空の状態への変更はできません"];
+        if (this.password) {
+          return [(v) => v.length >= 4 || "4文字以上で設定してください"];
+        }
       },
       avatar_nameRules() {
-        return [(v) => v.length <= 3 || "3文字以下で設定してください"];
+        if (this.user.avatar_name) {
+          return [(v) => v.length <= 3 || "3文字以下で設定してください"];
+        }
       }
     },
     methods: {
@@ -241,7 +245,7 @@
             const userParams1 = {
               user: {
                 name: this.user.name,
-                email: this.user.email,
+                email: this.user.email.toLowerCase(),
                 // password: this.user.password,
                 introduction: this.user.introduction,
                 avatar_name: this.user.avatar_name,
@@ -258,7 +262,7 @@
             const userParams2 = {
               user: {
                 name: this.user.name,
-                email: this.user.email,
+                email: this.user.email.toLowerCase(),
                 password: this.password,
                 introduction: this.user.introduction,
                 avatar_name: this.user.avatar_name,

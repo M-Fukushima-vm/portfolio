@@ -3,17 +3,21 @@
 
 <template>
   <div>
-    <v-list-item-icon>
-      <v-btn
-        icon
-        @click="toggleLoginForm"
-      >
-        <div>
-          <v-icon>mdi-login-variant</v-icon>
-          <v-list-item-title class="text-caption">start</v-list-item-title>
+    <v-list-item
+      link
+      class="py-1 my-3"
+      @click="toggleLoginForm"
+    >
+      <v-list-item-icon class="justify-center align-center">
+        <div class="text-center">
+          <v-icon>
+            mdi-login-variant
+          </v-icon>
+          <v-list-item-subtitle class="text-caption">start</v-list-item-subtitle>
         </div>
-      </v-btn>
-    </v-list-item-icon>
+      </v-list-item-icon>
+      <v-list-item-subtitle></v-list-item-subtitle>
+    </v-list-item>
 
     <v-dialog
       v-model="toggleLoginFlag"

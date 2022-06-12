@@ -2,32 +2,25 @@
 
 <template>
   <div>
-    <v-list-item link>
-      <v-list-item-icon>
-        <v-icon>mdi-folder</v-icon>
-      </v-list-item-icon>
-      <v-list-item-title>My Files</v-list-item-title>
-    </v-list-item>
-
-    <v-list-item link>
-      <v-list-item-icon>
-        <v-icon>mdi-account-multiple</v-icon>
-      </v-list-item-icon>
-      <v-list-item-title>Shared with me</v-list-item-title>
-    </v-list-item>
-
-    <v-list-item link>
-      <v-list-item-icon>
-        <v-icon>mdi-star</v-icon>
-      </v-list-item-icon>
-      <v-list-item-title>Starred</v-list-item-title>
-    </v-list-item>
+    <top-link
+      v-if="!$store.getters['auth/currentUser']"
+    >
+    </top-link>
+    <user-home
+      v-if="$store.getters['auth/currentUser']"
+    >
+    </user-home>
   </div>
 </template>
 
 <script>
+  import TopLink from '@/components/nav/link/z_/TopLink'
+  import UserHome from '@/components/nav/link/z_/UserHome'
   export default {
-    
+    components: {
+      TopLink,
+      UserHome,
+    }
   }
 </script>
 
